@@ -3,6 +3,7 @@ import rxmen from "@/assets/images/rxmen.png";
 import raptorx from "@/assets/images/raptorx.png";
 import CheckCircleIcon from "@/assets/icons/check-circle.svg";
 import ArrowUpRightIcon from "@/assets/icons/arrow-up-right.svg";
+import Link from "next/link";
 
 const portfolioProjects = [
   {
@@ -76,15 +77,15 @@ export const ProjectsSection = () => {
                       </li>
                     ))}
                   </ul>
-                  <a
+                  <Link
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="bg-white text-gray-950 h-12 w-full md:w-auto px-6 rounded-xl font-semibold inline-flex items-center justify-center gap-2 mt-8 hover:bg-gray-100 transition-colors"
+                    className="bg-white text-gray-950 h-12 w-full md:w-auto px-6 rounded-xl font-semibold inline-flex items-center justify-center gap-2 mt-8 hover:bg-gray-100 transition-colors relative z-20"
                   >
                     <span>Visit Live Site</span>
                     <ArrowUpRightIcon className="size-4" />
-                  </a>
+                  </Link>
                 </div>
                 <div className="relative">
                   <Image
