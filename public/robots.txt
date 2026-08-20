@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://aanuj.com/sitemap.xml
+
+# Block sensitive or private paths
+Disallow: /api/
+Disallow: /_next/
+Disallow: /.well-known/
+
+# Additional directives
+Crawl-delay: 1
