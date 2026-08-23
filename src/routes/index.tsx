@@ -198,7 +198,7 @@ function Portfolio() {
           <div className="mt-6 rounded-2xl border border-border/60 bg-card/40 p-6 md:p-8" style={{ boxShadow: "var(--shadow-soft)" }}>
             <div className="flex flex-wrap items-baseline justify-between gap-2">
               <h3 className="font-display text-3xl md:text-4xl text-gradient">Zyathi</h3>
-              <span className="text-sm text-muted-foreground">Founding Engineer</span>
+              {/* <span className="text-sm text-muted-foreground">Founding Engineer</span> */}
             </div>
             <div className="mt-1 text-xs uppercase tracking-wider text-accent">India's first Hindi-first femtech platform</div>
             <p className="mt-4 text-muted-foreground max-w-2xl">
