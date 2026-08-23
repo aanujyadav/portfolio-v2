@@ -211,7 +211,7 @@ function Portfolio() {
               </a> • Launching Q2 2027
             </div>
             <div className="mt-6 flex flex-wrap gap-2 text-xs">
-              {['Femtech', 'Product Engineering', 'AI/ML', 'Healthcare', 'Hindi-first'].map((tag) => (
+              {['Femtech', 'Product Engineering', 'Healthcare', 'Hindi-first'].map((tag) => (
                 <span key={tag} className="rounded-full border border-border bg-background/60 px-3 py-1">
                   {tag}
                 </span>
