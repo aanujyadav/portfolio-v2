@@ -208,7 +208,7 @@ function Portfolio() {
             <div className="mt-4 text-sm text-muted-foreground">
               <a href="https://zyathi.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline" aria-label="Visit Zyathi website (opens in new tab)">
                 zyathi.com
-              </a> • Launching Q2 2027
+              </a>
             </div>
             <div className="mt-6 flex flex-wrap gap-2 text-xs">
               {['Femtech', 'Product Engineering', 'Healthcare', 'Hindi-first'].map((tag) => (
