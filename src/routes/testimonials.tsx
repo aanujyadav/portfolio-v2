@@ -244,31 +244,8 @@ function TestimonialsPage() {
           </section>
         )}
 
-        {/* Call to Action */}
-        <section className="border-t border-border/60 py-12">
-          <div 
-            className="rounded-3xl border border-border/60 bg-card/50 p-8 md:p-16 backdrop-blur-sm text-center"
-            style={{ boxShadow: "var(--shadow-soft)" }}
-          >
-            <h2 className="font-display text-4xl md:text-6xl leading-tight mb-6">
-              Testimonials <span className="text-gradient italic">System</span>
-            </h2>
-            <div className="max-w-3xl mx-auto space-y-6 text-lg text-muted-foreground leading-relaxed">
-              <p>
-                This testimonials system demonstrates how you could collect and display reviews from colleagues, clients, and collaborators. 
-                The sample testimonials shown above represent the kind of feedback that helps build credibility.
-              </p>
-              <div className="bg-card/60 rounded-xl p-6 text-left">
-                <h3 className="font-medium text-foreground mb-3">Implementation Options:</h3>
-                <ul className="space-y-2 text-sm">
-                  <li>• <strong>Database Integration:</strong> Supabase, Firebase, or custom backend</li>
-                  <li>• <strong>Form Handling:</strong> EmailJS, Formspree, or API endpoints</li>
-                  <li>• <strong>Review Moderation:</strong> Admin dashboard for approval workflow</li>
-                  <li>• <strong>Email Notifications:</strong> Automatic alerts for new submissions</li>
-                </ul>
-              </div>
-            </div>
-            <div className="mt-8">
+
+           <div className="mt-8">
               <Link
                 to="/testimonials/submit"
                 className="inline-flex items-center gap-2 rounded-full px-8 py-4 text-lg font-medium text-primary-foreground transition hover:opacity-90 hover:scale-105"
@@ -277,8 +254,6 @@ function TestimonialsPage() {
                 Share Your Experience <ArrowUpRight className="h-5 w-5" />
               </Link>
             </div>
-          </div>
-        </section>
       </main>
     </div>
   );
