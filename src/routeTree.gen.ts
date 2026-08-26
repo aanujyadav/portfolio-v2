@@ -9,38 +9,113 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TestimonialsRouteImport } from './routes/testimonials'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as WorkRxmenRouteImport } from './routes/work/rxmen'
+import { Route as TestimonialsSubmitRouteImport } from './routes/testimonials.submit'
+import { Route as ProjectsZyathiRouteImport } from './routes/projects/zyathi'
+import { Route as ProjectsSkillflareRouteImport } from './routes/projects/skillflare'
 
+const TestimonialsRoute = TestimonialsRouteImport.update({
+  id: '/testimonials',
+  path: '/testimonials',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WorkRxmenRoute = WorkRxmenRouteImport.update({
+  id: '/work/rxmen',
+  path: '/work/rxmen',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TestimonialsSubmitRoute = TestimonialsSubmitRouteImport.update({
+  id: '/submit',
+  path: '/submit',
+  getParentRoute: () => TestimonialsRoute,
+} as any)
+const ProjectsZyathiRoute = ProjectsZyathiRouteImport.update({
+  id: '/projects/zyathi',
+  path: '/projects/zyathi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProjectsSkillflareRoute = ProjectsSkillflareRouteImport.update({
+  id: '/projects/skillflare',
+  path: '/projects/skillflare',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/testimonials': typeof TestimonialsRouteWithChildren
+  '/projects/skillflare': typeof ProjectsSkillflareRoute
+  '/projects/zyathi': typeof ProjectsZyathiRoute
+  '/testimonials/submit': typeof TestimonialsSubmitRoute
+  '/work/rxmen': typeof WorkRxmenRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/testimonials': typeof TestimonialsRouteWithChildren
+  '/projects/skillflare': typeof ProjectsSkillflareRoute
+  '/projects/zyathi': typeof ProjectsZyathiRoute
+  '/testimonials/submit': typeof TestimonialsSubmitRoute
+  '/work/rxmen': typeof WorkRxmenRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/testimonials': typeof TestimonialsRouteWithChildren
+  '/projects/skillflare': typeof ProjectsSkillflareRoute
+  '/projects/zyathi': typeof ProjectsZyathiRoute
+  '/testimonials/submit': typeof TestimonialsSubmitRoute
+  '/work/rxmen': typeof WorkRxmenRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/testimonials'
+    | '/projects/skillflare'
+    | '/projects/zyathi'
+    | '/testimonials/submit'
+    | '/work/rxmen'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/testimonials'
+    | '/projects/skillflare'
+    | '/projects/zyathi'
+    | '/testimonials/submit'
+    | '/work/rxmen'
+  id:
+    | '__root__'
+    | '/'
+    | '/testimonials'
+    | '/projects/skillflare'
+    | '/projects/zyathi'
+    | '/testimonials/submit'
+    | '/work/rxmen'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  TestimonialsRoute: typeof TestimonialsRouteWithChildren
+  ProjectsSkillflareRoute: typeof ProjectsSkillflareRoute
+  ProjectsZyathiRoute: typeof ProjectsZyathiRoute
+  WorkRxmenRoute: typeof WorkRxmenRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/testimonials': {
+      id: '/testimonials'
+      path: '/testimonials'
+      fullPath: '/testimonials'
+      preLoaderRoute: typeof TestimonialsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +123,55 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/work/rxmen': {
+      id: '/work/rxmen'
+      path: '/work/rxmen'
+      fullPath: '/work/rxmen'
+      preLoaderRoute: typeof WorkRxmenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/testimonials/submit': {
+      id: '/testimonials/submit'
+      path: '/submit'
+      fullPath: '/testimonials/submit'
+      preLoaderRoute: typeof TestimonialsSubmitRouteImport
+      parentRoute: typeof TestimonialsRoute
+    }
+    '/projects/zyathi': {
+      id: '/projects/zyathi'
+      path: '/projects/zyathi'
+      fullPath: '/projects/zyathi'
+      preLoaderRoute: typeof ProjectsZyathiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/projects/skillflare': {
+      id: '/projects/skillflare'
+      path: '/projects/skillflare'
+      fullPath: '/projects/skillflare'
+      preLoaderRoute: typeof ProjectsSkillflareRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
+interface TestimonialsRouteChildren {
+  TestimonialsSubmitRoute: typeof TestimonialsSubmitRoute
+}
+
+const TestimonialsRouteChildren: TestimonialsRouteChildren = {
+  TestimonialsSubmitRoute: TestimonialsSubmitRoute,
+}
+
+const TestimonialsRouteWithChildren = TestimonialsRoute._addFileChildren(
+  TestimonialsRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  TestimonialsRoute: TestimonialsRouteWithChildren,
+  ProjectsSkillflareRoute: ProjectsSkillflareRoute,
+  ProjectsZyathiRoute: ProjectsZyathiRoute,
+  WorkRxmenRoute: WorkRxmenRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

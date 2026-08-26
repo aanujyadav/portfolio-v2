@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowUpRight, Mail, Github, Linkedin, Phone, MapPin, Award, Code2, Briefcase, GraduationCap, Sparkles } from "lucide-react";
 
 export const Route = createFileRoute("/")({
@@ -139,29 +139,34 @@ function Portfolio() {
 
       <main id="main-content" className="mx-auto max-w-5xl px-6" role="main">
         {/* Hero */}
-        <section className="pt-14 pb-20 md:pt-36 md:pb-40" aria-labelledby="hero-heading">
-          <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/40 px-3 py-1 text-xs text-muted-foreground" role="status">
+        <section className="pt-16 pb-24 md:pt-32 md:pb-40" aria-labelledby="hero-heading">
+          <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/40 px-3 py-1 text-xs text-muted-foreground backdrop-blur-sm" role="status">
             <span className="relative flex h-2 w-2" aria-label="Available status indicator">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" aria-hidden="true" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" aria-hidden="true" />
             </span>
             Available for collaborations
           </div>
-          <h1 id="hero-heading" className="font-display mt-6 text-5xl md:text-7xl">
+          
+          <h1 id="hero-heading" className="font-display mt-8 text-5xl md:text-7xl leading-tight">
             Anujkumar Yadav
-            <br />
+          </h1>
+          
+          <div className="mt-0 font-display text-3xl md:text-5xl leading-tight text-muted-foreground">
             <span className="text-gradient italic">Software Engineer</span> building
             <br />
-            healthcare products from 0 → 1.
-          </h1>
-          <p className="mt-8 max-w-2xl text-lg text-muted-foreground md:text-xl">
-            I build products across healthcare, AI, and modern web technologies—with a focus on turning messy real-world problems into simple software. 
+            healthcare products from <span className="text-gradient">0 → 1</span>.
+          </div>
+          
+          <p className="mt-8 max-w-3xl text-lg text-muted-foreground md:text-xl leading-relaxed">
+            I build products across healthcare, AI, and modern web technologies with a focus on turning messy real world problems into simple, elegant software. 
             Currently building India's first Hindi-first femtech platform.
           </p>
+          
           <div className="mt-10 flex flex-wrap items-center gap-3">
             <a
               href="#work"
-              className="inline-flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium text-primary-foreground transition hover:opacity-90"
+              className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium text-primary-foreground transition hover:opacity-90 hover:scale-105"
               style={{ background: "var(--gradient-warm)", boxShadow: "var(--shadow-glow)" }}
               aria-label="View my work experience and projects"
             >
@@ -169,25 +174,31 @@ function Portfolio() {
             </a>
             <a
               href="mailto:hello@aanuj.com"
-              className="inline-flex items-center gap-2 rounded-full border border-border bg-card/40 px-5 py-2.5 text-sm transition hover:border-primary"
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card/40 px-6 py-3 text-sm transition hover:border-primary hover:bg-card/60 backdrop-blur-sm"
               aria-label="Contact me via email"
             >
               <Mail className="h-4 w-4" aria-hidden="true" /> Connect with me
             </a>
           </div>
-          <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
-            <span>Healthcare</span>
-            <span>·</span>
-            <span>Product Engineering</span>
-            <span>·</span>
-            <span>AI</span>
-            <span>·</span>
-            <span>0→1</span>
+          
+          <div className="mt-8 flex flex-wrap items-center gap-6 text-sm text-muted-foreground">
+            <div className="flex items-center gap-2">
+              <div className="h-1 w-1 rounded-full bg-accent" />
+              <span>Healthcare</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="h-1 w-1 rounded-full bg-accent" />
+              <span>Product Engineering</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="h-1 w-1 rounded-full bg-accent" />
+              <span>0 → 1 Products</span>
+            </div>
           </div>
         </section>
 
         {/* Currently Building */}
-        <section className="border-t border-border/60 py-10">
+        <section className="border-t border-border/60 py-12">
           <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/40 px-3 py-1 text-xs text-muted-foreground">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-500 opacity-75" />
@@ -195,10 +206,14 @@ function Portfolio() {
             </span>
             Currently building
           </div>
-          <div className="mt-6 rounded-2xl border border-border/60 bg-card/40 p-6 md:p-8" style={{ boxShadow: "var(--shadow-soft)" }}>
+          <div 
+            className="mt-6 rounded-2xl border border-border/60 bg-card/40 p-6 md:p-8 cursor-pointer group transition hover:border-primary/60" 
+            style={{ boxShadow: "var(--shadow-soft)" }}
+            onClick={() => window.location.href = "/projects/zyathi"}
+          >
             <div className="flex flex-wrap items-baseline justify-between gap-2">
               <h3 className="font-display text-3xl md:text-4xl text-gradient">Zyathi</h3>
-              {/* <span className="text-sm text-muted-foreground">Founding Engineer</span> */}
+              <ArrowUpRight className="h-5 w-5 text-muted-foreground transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary" />
             </div>
             <div className="mt-1 text-xs uppercase tracking-wider text-accent">India's first Hindi-first femtech platform</div>
             <p className="mt-4 text-muted-foreground max-w-2xl">
@@ -206,7 +221,7 @@ function Portfolio() {
               Creating accessible healthcare in Hindi with AI-powered guidance and culturally relevant solutions.
             </p>
             <div className="mt-4 text-sm text-muted-foreground">
-              <a href="https://zyathi.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline" aria-label="Visit Zyathi website (opens in new tab)">
+              <a href="https://zyathi.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline" aria-label="Visit Zyathi website (opens in new tab)" onClick={(e) => e.stopPropagation()}>
                 zyathi.com
               </a>
             </div>
@@ -217,11 +232,14 @@ function Portfolio() {
                 </span>
               ))}
             </div>
+            <div className="mt-6 inline-flex items-center gap-2 text-sm text-primary transition group-hover:gap-3">
+              Read detailed case study <ArrowUpRight className="h-4 w-4" />
+            </div>
           </div>
         </section>
 
         {/* About / Stats */}
-        <section id="about" className="grid gap-6 border-t border-border/60 py-10 md:grid-cols-3">
+        <section id="about" className="grid gap-6 border-t border-border/60 py-12 md:grid-cols-3">
           {[
             { k: "2+", v: "Years building production healthcare products" },
             { k: "90+", v: "PageSpeed score after re-architecture" },
@@ -235,25 +253,38 @@ function Portfolio() {
         </section>
 
         {/* Why Healthcare */}
-        <section className="border-t border-border/60 py-10">
-          <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/40 px-3 py-1 text-xs text-muted-foreground">
+        <section className="border-t border-border/60 py-12">
+          <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/40 px-3 py-1 text-xs text-muted-foreground backdrop-blur-sm">
             <Sparkles className="h-4 w-4" /> Focus
           </div>
-          <h2 className="font-display mt-4 text-4xl md:text-5xl">Why healthcare?</h2>
-          <div className="mt-8 max-w-3xl">
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              I've spent my engineering career working close to healthcare, where software isn't just about shipping features. 
-              Privacy, trust, clinical workflows, reliability and user behavior all matter.
-            </p>
-            <p className="mt-4 text-lg text-muted-foreground leading-relaxed">
-              I'm particularly interested in building products around women's health, preventive care, and healthcare accessibility 
-              where technology can bridge cultural and language gaps in healthcare delivery.
-            </p>
+          <h2 className="font-display mt-6 text-4xl md:text-6xl leading-tight">Why healthcare?</h2>
+          <div className="mt-10 max-w-4xl">
+            <div className="grid gap-8 md:grid-cols-2">
+              <div className="space-y-6">
+                <p className="text-xl text-muted-foreground leading-relaxed">
+                  I've spent my engineering career working close to healthcare, where software isn't just about shipping features.
+                </p>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  Privacy, trust, clinical workflows, reliability and user behavior all matter in ways that go beyond typical product development. 
+                  Healthcare software touches people's most vulnerable moments.
+                </p>
+              </div>
+              <div className="space-y-6">
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  I'm particularly interested in building products around women's health, preventive care, and healthcare accessibility 
+                  where technology can bridge cultural and language gaps in healthcare delivery.
+                </p>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  The intersection of AI, localization, and healthcare creates opportunities to make quality healthcare accessible 
+                  to people who have been systematically excluded from traditional healthcare systems.
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
         {/* What I Build */}
-        <section className="border-t border-border/60 py-10">
+        <section className="border-t border-border/60 py-12">
           <SectionHeader icon={<Code2 className="h-4 w-4" />} eyebrow="What I do" title="What I build" />
           <div className="mt-10 grid gap-6 md:grid-cols-2">
             <div className="rounded-2xl border border-border/60 bg-card/40 p-6">
@@ -288,7 +319,7 @@ function Portfolio() {
         </section>
 
         {/* Technology Stack */}
-        <section className="border-t border-border/60 py-10">
+        <section className="border-t border-border/60 py-12">
           <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/40 px-3 py-1 text-xs text-muted-foreground">
             <Code2 className="h-4 w-4" /> Technologies
           </div>
@@ -310,7 +341,7 @@ function Portfolio() {
         </section>
 
         {/* Engineering Philosophy */}
-        <section className="border-t border-border/60 py-10">
+        <section className="border-t border-border/60 py-12">
           <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/40 px-3 py-1 text-xs text-muted-foreground">
             <Sparkles className="h-4 w-4" /> Philosophy
           </div>
@@ -344,21 +375,31 @@ function Portfolio() {
         </section>
 
         {/* Experience */}
-        <section id="work" className="border-t border-border/60 py-10">
+        <section id="work" className="border-t border-border/60 py-12">
           <SectionHeader icon={<Briefcase className="h-4 w-4" />} eyebrow="Experience" title="Where I've shipped" />
           <div className="mt-10 space-y-4">
-            {experience.map((e) => (
+            {experience.map((e, index) => (
               <article
                 key={e.company}
-                className="group rounded-2xl border border-border/60 bg-card/40 p-6 transition hover:border-primary/60 md:p-8"
+                className="group rounded-2xl border border-border/60 bg-card/40 p-6 transition hover:border-primary/60 md:p-8 cursor-pointer"
                 style={{ boxShadow: "var(--shadow-soft)" }}
+                onClick={() => {
+                  if (e.company === "RxMen") {
+                    window.location.href = "/work/rxmen";
+                  }
+                }}
               >
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
                   <h3 className="font-display text-2xl md:text-3xl">
                     {e.role} <span className="text-muted-foreground">·</span>{" "}
                     <span className="text-gradient">{e.company}</span>
                   </h3>
-                  <span className="text-sm text-muted-foreground">{e.period}</span>
+                  <div className="flex items-center gap-3">
+                    <span className="text-sm text-muted-foreground">{e.period}</span>
+                    {e.company === "RxMen" && (
+                      <ArrowUpRight className="h-4 w-4 text-muted-foreground transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary" />
+                    )}
+                  </div>
                 </div>
                 {e.note && <p className="mt-2 text-sm italic text-muted-foreground">{e.note}</p>}
                 <ul className="mt-5 space-y-2.5 text-muted-foreground">
@@ -369,20 +410,36 @@ function Portfolio() {
                     </li>
                   ))}
                 </ul>
+                {e.company === "RxMen" && (
+                  <div className="mt-6 inline-flex items-center gap-2 text-sm text-primary transition group-hover:gap-3">
+                    Read detailed case study <ArrowUpRight className="h-4 w-4" />
+                  </div>
+                )}
               </article>
             ))}
           </div>
         </section>
 
         {/* Projects */}
-        <section id="projects" className="border-t border-border/60 py-10">
+        <section id="projects" className="border-t border-border/60 py-12">
           <SectionHeader icon={<Sparkles className="h-4 w-4" />} eyebrow="Case studies" title="Selected projects" />
           <div className="mt-10 grid gap-8">
             {projects.map((p) => (
-              <article key={p.name} className="rounded-2xl border border-border/60 bg-card/40 p-6 md:p-8">
+              <article 
+                key={p.name} 
+                className="group rounded-2xl border border-border/60 bg-card/40 p-6 md:p-8 cursor-pointer transition hover:border-primary/60"
+                onClick={() => {
+                  if (p.name === "SkillFlare") {
+                    window.location.href = "/projects/skillflare";
+                  }
+                }}
+              >
                 <div className="flex flex-wrap items-baseline justify-between gap-2">
                   <h3 className="font-display text-3xl text-gradient">{p.name}</h3>
-                  <span className="text-sm text-muted-foreground">{p.period}</span>
+                  <div className="flex items-center gap-3">
+                    <span className="text-sm text-muted-foreground">{p.period}</span>
+                    <ArrowUpRight className="h-4 w-4 text-muted-foreground transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-primary" />
+                  </div>
                 </div>
                 <div className="mt-1 text-xs uppercase tracking-wider text-accent">{p.tag}</div>
                 
@@ -395,11 +452,6 @@ function Portfolio() {
                   <div>
                     <h4 className="font-medium text-sm uppercase tracking-wider text-muted-foreground mb-2">My Role</h4>
                     <p className="text-muted-foreground">{p.role}</p>
-                  </div>
-                  
-                  <div>
-                    <h4 className="font-medium text-sm uppercase tracking-wider text-muted-foreground mb-2">Architecture</h4>
-                    <p className="text-muted-foreground">{p.architecture}</p>
                   </div>
                   
                   <div>
@@ -419,6 +471,10 @@ function Portfolio() {
                       </span>
                     ))}
                   </div>
+
+                  <div className="mt-6 inline-flex items-center gap-2 text-sm text-primary transition group-hover:gap-3">
+                    Read detailed case study <ArrowUpRight className="h-4 w-4" />
+                  </div>
                 </div>
               </article>
             ))}
@@ -426,27 +482,37 @@ function Portfolio() {
         </section>
 
         {/* About */}
-        <section className="border-t border-border/60 py-10">
-          <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/40 px-3 py-1 text-xs text-muted-foreground">
+        <section className="border-t border-border/60 py-12">
+          <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/40 px-3 py-1 text-xs text-muted-foreground backdrop-blur-sm">
             <Briefcase className="h-4 w-4" /> About
           </div>
-          <h2 className="font-display mt-4 text-4xl md:text-5xl">About Anuj</h2>
-          <div className="mt-8 max-w-3xl space-y-4">
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              I'm a Software Engineer focused on building products at the intersection of technology and healthcare.
-            </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              My work spans frontend architecture, backend systems, APIs, product development and UX. I've spent the last few years 
-              working on healthcare products and increasingly focus on the problems behind the software not just the implementation.
-            </p>
-            <p className="text-lg text-muted-foreground leading-relaxed">
-              Long term, I want to build technology companies that solve meaningful healthcare problems.
-            </p>
+          <h2 className="font-display mt-6 text-4xl md:text-6xl leading-tight">About Anuj</h2>
+          <div className="mt-10 max-w-4xl">
+            <div className="grid gap-8 md:grid-cols-2">
+              <div className="space-y-6">
+                <p className="text-xl text-muted-foreground leading-relaxed font-medium">
+                  I'm a Software Engineer focused on building products at the intersection of technology and healthcare.
+                </p>
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  My work spans frontend architecture, backend systems, APIs, product development and UX. I've spent the last few years 
+                  working on healthcare products and increasingly focus on the problems behind the software, not just the implementation.
+                </p>
+              </div>
+              <div className="space-y-6">
+                <p className="text-lg text-muted-foreground leading-relaxed">
+                  What drives me is building technology that solves meaningful problems for real people. Healthcare, especially women's health, 
+                  represents some of the most complex and impactful challenges where good software can genuinely improve lives.
+                </p>
+                <p className="text-lg text-muted-foreground leading-relaxed font-medium">
+                  Long term, I want to build technology companies that solve meaningful healthcare problems at scale.
+                </p>
+              </div>
+            </div>
           </div>
         </section>
 
         {/* Now */}
-        <section className="border-t border-border/60 py-10">
+        <section className="border-t border-border/60 py-12">
           <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/40 px-3 py-1 text-xs text-muted-foreground">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
@@ -480,7 +546,7 @@ function Portfolio() {
         </section>
 
         {/* Achievements + Education */}
-        <section className="grid gap-6 border-t border-border/60 py-10 md:grid-cols-2">
+        <section className="grid gap-6 border-t border-border/60 py-12 md:grid-cols-2">
           <div className="rounded-2xl border border-border/60 bg-card/40 p-6 md:p-8">
             <SectionHeader icon={<Award className="h-4 w-4" />} eyebrow="Recognition" title="Achievements" small />
             <div className="mt-6">
@@ -507,19 +573,23 @@ function Portfolio() {
         </section>
 
         {/* Contact */}
-        <section id="contact" className="border-t border-border/60 py-10">
+        <section id="contact" className="border-t border-border/60 py-20">
           <div
-            className="overflow-hidden rounded-3xl border border-border/60 bg-card/50 p-5 md:p-16"
+            className="overflow-hidden rounded-3xl border border-border/60 bg-card/50 p-8 md:p-16 backdrop-blur-sm"
             style={{ boxShadow: "var(--shadow-soft)" }}
           >
-            <div className="font-display text-4xl md:text-6xl">
-              Let's build something <span className="text-gradient italic">meaningful</span>.
+            <div className="font-display text-5xl md:text-7xl leading-tight">
+              Let's build something <br />
+              <span className="text-gradient italic">meaningful</span>.
             </div>
-            <p className="mt-5 max-w-xl text-muted-foreground">
+            <p className="mt-8 max-w-2xl text-xl text-muted-foreground leading-relaxed">
               I'm interested in product-led teams shipping real-world healthcare and consumer software. 
-              Looking for builders working on ambitious healthcare problems. Reach out — I reply to every message.
+              Looking for builders working on ambitious healthcare problems. 
             </p>
-            <div className="mt-10 grid gap-3 sm:grid-cols-2 md:max-w-2xl">
+            <p className="mt-4 max-w-xl text-lg text-muted-foreground leading-relaxed">
+              Reach out I reply to every mail.
+            </p>
+            <div className="mt-12 grid gap-4 sm:grid-cols-2 md:max-w-3xl">
               <ContactRow icon={<Mail className="h-4 w-4" />} label="hello@aanuj.com" href="mailto:hello@aanuj.com" />
               <ContactRow icon={<Phone className="h-4 w-4" />} label="+91 90960 20595" href="tel:+919096020595" />
               <ContactRow icon={<Github className="h-4 w-4" />} label="github.com/aanujyadav" href="https://github.com/aanujyadav" />
@@ -544,10 +614,10 @@ function SectionHeader({
 }: { icon: React.ReactNode; eyebrow: string; title: string; small?: boolean }) {
   return (
     <div>
-      <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/40 px-3 py-1 text-xs text-muted-foreground">
+      <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/40 px-3 py-1 text-xs text-muted-foreground backdrop-blur-sm">
         {icon} {eyebrow}
       </div>
-      <h2 className={`font-display mt-4 ${small ? "text-3xl" : "text-4xl md:text-5xl"}`}>{title}</h2>
+      <h2 className={`font-display mt-6 leading-tight ${small ? "text-3xl md:text-4xl" : "text-4xl md:text-6xl"}`}>{title}</h2>
     </div>
   );
 }
