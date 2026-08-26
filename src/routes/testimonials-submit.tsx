@@ -400,34 +400,6 @@ function SubmitTestimonialPage() {
               </div>
             </form>
           </div>
-
-          {/* Implementation Info */}
-          <div className="mt-12 rounded-2xl border border-border/60 bg-card/40 p-6">
-            <h3 className="font-display text-xl text-gradient mb-4">💻 Implementation Options</h3>
-            <div className="space-y-4 text-sm text-muted-foreground">
-              <div>
-                <p className="font-medium text-foreground mb-2">For a functional testimonials system, you could integrate:</p>
-                <ul className="space-y-1 ml-4">
-                  <li>• <strong>Airtable:</strong> Simple database with API access</li>
-                  <li>• <strong>Supabase:</strong> Full backend-as-a-service with real-time features</li>
-                  <li>• <strong>Firebase:</strong> Google's backend platform</li>
-                  <li>• <strong>Formspree/EmailJS:</strong> Direct email submissions</li>
-                  <li>• <strong>Notion API:</strong> Store submissions in Notion database</li>
-                  <li>• <strong>Custom Backend:</strong> Your own API with database</li>
-                </ul>
-              </div>
-              <div>
-                <p className="font-medium text-foreground mb-2">Workflow would be:</p>
-                <ol className="space-y-1 ml-4">
-                  <li>1. Form submission → API call</li>
-                  <li>2. Store in database</li>
-                  <li>3. Send email notification to you</li>
-                  <li>4. Review and approve testimonials</li>
-                  <li>5. Display approved testimonials</li>
-                </ol>
-              </div>
-            </div>
-          </div>
         </section>
       </main>
     </div>
