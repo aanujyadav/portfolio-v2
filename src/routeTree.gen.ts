@@ -9,13 +9,18 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TestimonialsSubmitRouteImport } from './routes/testimonials-submit'
 import { Route as TestimonialsRouteImport } from './routes/testimonials'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as WorkRxmenRouteImport } from './routes/work/rxmen'
-import { Route as TestimonialsSubmitRouteImport } from './routes/testimonials.submit'
 import { Route as ProjectsZyathiRouteImport } from './routes/projects/zyathi'
 import { Route as ProjectsSkillflareRouteImport } from './routes/projects/skillflare'
 
+const TestimonialsSubmitRoute = TestimonialsSubmitRouteImport.update({
+  id: '/testimonials-submit',
+  path: '/testimonials-submit',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const TestimonialsRoute = TestimonialsRouteImport.update({
   id: '/testimonials',
   path: '/testimonials',
@@ -31,11 +36,6 @@ const WorkRxmenRoute = WorkRxmenRouteImport.update({
   path: '/work/rxmen',
   getParentRoute: () => rootRouteImport,
 } as any)
-const TestimonialsSubmitRoute = TestimonialsSubmitRouteImport.update({
-  id: '/submit',
-  path: '/submit',
-  getParentRoute: () => TestimonialsRoute,
-} as any)
 const ProjectsZyathiRoute = ProjectsZyathiRouteImport.update({
   id: '/projects/zyathi',
   path: '/projects/zyathi',
@@ -49,27 +49,27 @@ const ProjectsSkillflareRoute = ProjectsSkillflareRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/testimonials': typeof TestimonialsRouteWithChildren
+  '/testimonials': typeof TestimonialsRoute
+  '/testimonials-submit': typeof TestimonialsSubmitRoute
   '/projects/skillflare': typeof ProjectsSkillflareRoute
   '/projects/zyathi': typeof ProjectsZyathiRoute
-  '/testimonials/submit': typeof TestimonialsSubmitRoute
   '/work/rxmen': typeof WorkRxmenRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/testimonials': typeof TestimonialsRouteWithChildren
+  '/testimonials': typeof TestimonialsRoute
+  '/testimonials-submit': typeof TestimonialsSubmitRoute
   '/projects/skillflare': typeof ProjectsSkillflareRoute
   '/projects/zyathi': typeof ProjectsZyathiRoute
-  '/testimonials/submit': typeof TestimonialsSubmitRoute
   '/work/rxmen': typeof WorkRxmenRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/testimonials': typeof TestimonialsRouteWithChildren
+  '/testimonials': typeof TestimonialsRoute
+  '/testimonials-submit': typeof TestimonialsSubmitRoute
   '/projects/skillflare': typeof ProjectsSkillflareRoute
   '/projects/zyathi': typeof ProjectsZyathiRoute
-  '/testimonials/submit': typeof TestimonialsSubmitRoute
   '/work/rxmen': typeof WorkRxmenRoute
 }
 export interface FileRouteTypes {
@@ -77,31 +77,32 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/testimonials'
+    | '/testimonials-submit'
     | '/projects/skillflare'
     | '/projects/zyathi'
-    | '/testimonials/submit'
     | '/work/rxmen'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/testimonials'
+    | '/testimonials-submit'
     | '/projects/skillflare'
     | '/projects/zyathi'
-    | '/testimonials/submit'
     | '/work/rxmen'
   id:
     | '__root__'
     | '/'
     | '/testimonials'
+    | '/testimonials-submit'
     | '/projects/skillflare'
     | '/projects/zyathi'
-    | '/testimonials/submit'
     | '/work/rxmen'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  TestimonialsRoute: typeof TestimonialsRouteWithChildren
+  TestimonialsRoute: typeof TestimonialsRoute
+  TestimonialsSubmitRoute: typeof TestimonialsSubmitRoute
   ProjectsSkillflareRoute: typeof ProjectsSkillflareRoute
   ProjectsZyathiRoute: typeof ProjectsZyathiRoute
   WorkRxmenRoute: typeof WorkRxmenRoute
@@ -109,6 +110,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/testimonials-submit': {
+      id: '/testimonials-submit'
+      path: '/testimonials-submit'
+      fullPath: '/testimonials-submit'
+      preLoaderRoute: typeof TestimonialsSubmitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/testimonials': {
       id: '/testimonials'
       path: '/testimonials'
@@ -130,13 +138,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WorkRxmenRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/testimonials/submit': {
-      id: '/testimonials/submit'
-      path: '/submit'
-      fullPath: '/testimonials/submit'
-      preLoaderRoute: typeof TestimonialsSubmitRouteImport
-      parentRoute: typeof TestimonialsRoute
-    }
     '/projects/zyathi': {
       id: '/projects/zyathi'
       path: '/projects/zyathi'
@@ -154,21 +155,10 @@ declare module '@tanstack/react-router' {
   }
 }
 
-interface TestimonialsRouteChildren {
-  TestimonialsSubmitRoute: typeof TestimonialsSubmitRoute
-}
-
-const TestimonialsRouteChildren: TestimonialsRouteChildren = {
-  TestimonialsSubmitRoute: TestimonialsSubmitRoute,
-}
-
-const TestimonialsRouteWithChildren = TestimonialsRoute._addFileChildren(
-  TestimonialsRouteChildren,
-)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  TestimonialsRoute: TestimonialsRouteWithChildren,
+  TestimonialsRoute: TestimonialsRoute,
+  TestimonialsSubmitRoute: TestimonialsSubmitRoute,
   ProjectsSkillflareRoute: ProjectsSkillflareRoute,
   ProjectsZyathiRoute: ProjectsZyathiRoute,
   WorkRxmenRoute: WorkRxmenRoute,

@@ -10,6 +10,10 @@ export const Route = createFileRoute("/testimonials")({
       { name: "description", content: "Read what colleagues, teammates, freelance clients, and collaborators say about working with Anujkumar Yadav on healthcare and technology projects." },
       { property: "og:title", content: "Testimonials — What People Say | Anujkumar Yadav" },
       { property: "og:description", content: "Testimonials and reviews from colleagues, clients, and collaborators who have worked with Anuj on healthcare technology projects." },
+      { property: "og:image", content: "/OG_anuj.png" },
+      { property: "og:url", content: "https://aanuj.com/testimonials" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: "/OG_anuj.png" },
     ],
     links: [
       { rel: "canonical", href: "/testimonials" },
@@ -171,7 +175,7 @@ function TestimonialsPage() {
                 <h3 className="font-display text-2xl text-muted-foreground mb-2">No testimonials yet</h3>
                 <p className="text-muted-foreground mb-6">Be the first to share your experience working with me!</p>
                 <Link
-                  to="/testimonials/submit"
+                  to="/testimonials-submit"
                   className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium text-primary-foreground transition hover:opacity-90"
                   style={{ background: "var(--gradient-warm)", boxShadow: "var(--shadow-glow)" }}
                 >
@@ -219,35 +223,10 @@ function TestimonialsPage() {
           </section>
         )}
 
-        {/* Categories */}
-        {!loading && !error && testimonials.length > 0 && (
-          <section className="border-t border-border/60 py-12">
-            <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/40 px-3 py-1 text-xs text-muted-foreground backdrop-blur-sm">
-              <Briefcase className="h-4 w-4" /> Categories
-            </div>
-            <h2 className="font-display mt-6 text-4xl md:text-6xl leading-tight">Review breakdown</h2>
 
-            <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
-              {[
-                { category: "Colleagues", count: testimonials.filter(t => t.relationship === "Colleague").length, icon: "👥" },
-                { category: "Teammates", count: testimonials.filter(t => t.relationship === "Teammate").length, icon: "🤝" },
-                { category: "Clients", count: testimonials.filter(t => t.relationship === "Client").length, icon: "💼" },
-                { category: "Collaborators", count: testimonials.filter(t => t.relationship === "Collaborator").length, icon: "🚀" }
-              ].map((item) => (
-                <div key={item.category} className="rounded-2xl border border-border/60 bg-card/40 p-6 text-center">
-                  <div className="text-3xl mb-3">{item.icon}</div>
-                  <div className="font-display text-2xl text-gradient">{item.count}</div>
-                  <div className="text-sm text-muted-foreground mt-1">{item.category}</div>
-                </div>
-              ))}
-            </div>
-          </section>
-        )}
-
-
-           <div className="mt-8">
+           <div className="mt-8 mb-20">
               <Link
-                to="/testimonials/submit"
+                to="/testimonials-submit"
                 className="inline-flex items-center gap-2 rounded-full px-8 py-4 text-lg font-medium text-primary-foreground transition hover:opacity-90 hover:scale-105"
                 style={{ background: "var(--gradient-warm)", boxShadow: "var(--shadow-glow)" }}
               >

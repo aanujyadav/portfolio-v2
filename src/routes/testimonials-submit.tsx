@@ -3,16 +3,20 @@ import { ArrowLeft, Star, Send, User, Briefcase, Heart, CheckCircle, Mail } from
 import { useState } from "react";
 import { supabase, type TestimonialInsert } from "../lib/supabase";
 
-export const Route = createFileRoute("/testimonials/submit")({
+export const Route = createFileRoute("/testimonials-submit")({
   head: () => ({
     meta: [
       { title: "Submit a Review — Testimonials | Anujkumar Yadav" },
       { name: "description", content: "Share your experience working with Anujkumar Yadav. Submit a testimonial about our collaboration on healthcare technology projects." },
       { property: "og:title", content: "Submit a Review — Testimonials | Anujkumar Yadav" },
       { property: "og:description", content: "Have you worked with Anuj? Share your experience and help others understand what it's like to collaborate on healthcare projects." },
+      { property: "og:image", content: "/OG_anuj.png" },
+      { property: "og:url", content: "https://aanuj.com/testimonials-submit" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: "/OG_anuj.png" },
     ],
     links: [
-      { rel: "canonical", href: "/testimonials/submit" },
+      { rel: "canonical", href: "/testimonials-submit" },
     ],
   }),
   component: SubmitTestimonialPage,

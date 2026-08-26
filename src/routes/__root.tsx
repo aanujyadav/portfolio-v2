@@ -81,9 +81,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { title: "Anujkumar Yadav — Software Engineer" },
       { name: "description", content: "Portfolio of Anujkumar Yadav — Software Engineer at RxMen, building healthcare products with Next.js, React, TypeScript." },
       { name: "author", content: "Anujkumar Yadav" },
-      { property: "og:aanuj.com", content: "aanuj.com" },
+      { property: "og:title", content: "Anujkumar Yadav — Software Engineer" },
+      { property: "og:description", content: "Portfolio of Anujkumar Yadav — Software Engineer at RxMen, building healthcare products with Next.js, React, TypeScript." },
+      { property: "og:image", content: "/OG_anuj.png" },
+      { property: "og:url", content: "https://aanuj.com" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: "/OG_anuj.png" },
     ],
     links: [
       {
